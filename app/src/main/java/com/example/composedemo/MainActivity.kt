@@ -13,12 +13,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.composedemo.ui.theme.ComposeDemoTheme
 
-class MainActivity : ComponentActivity() { //
+class MainActivity : ComponentActivity() { //Класс MainActivity -подкласс класса ComponentActivity
+    //реализует один метод onCreate(), который используется
+    // для обеспечения связи между стартовой активностью и пользовательскими интерфейсами
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ComposeDemoTheme {
+            ComposeDemoTheme { //composable функция
+                //Scaffold — это встроенный элемент Compose, который предоставляет стандартную
+                //структуру пользовательского интерфейса
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
@@ -30,7 +34,7 @@ class MainActivity : ComponentActivity() { //
     }
 }
 
-@Composable
+@Composable // функция создает элемент на экране
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
@@ -38,10 +42,13 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true) //функция предварительного просмотра
+//содержимое, выдаваемое функцией, должно отображаться на панели предварительного просмотра
 @Composable
 fun GreetingPreview() {
     ComposeDemoTheme {
-        Greeting("Android")
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            Greeting("Compose", modifier = Modifier.padding(innerPadding))
+        }
     }
 }
