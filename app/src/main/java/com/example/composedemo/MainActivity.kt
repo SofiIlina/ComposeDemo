@@ -10,7 +10,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.example.composedemo.ui.theme.ComposeDemoTheme
 
 class MainActivity : ComponentActivity() { //Класс MainActivity -подкласс класса ComponentActivity
@@ -23,5 +25,23 @@ class MainActivity : ComponentActivity() { //Класс MainActivity -подкл
             ComposeDemoTheme { //composable функция
             }
         }
+    }
+}
+
+@Composable // функция создает элемент на экране
+fun DemoText(message: String, fontSize: Float) {
+    Text(
+        text = message,
+        fontSize = fontSize.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+
+@Preview(showBackground = true, showSystemUi = true) //реализует предварительный просмотр
+@Composable
+fun DemoTextPreview() {
+    ComposeDemoTheme {
+        DemoText(message = "Welcome to Android", fontSize = 12f)
     }
 }
