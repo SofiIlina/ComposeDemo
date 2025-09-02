@@ -21,34 +21,7 @@ class MainActivity : ComponentActivity() { //Класс MainActivity -подкл
         enableEdgeToEdge()
         setContent {
             ComposeDemoTheme { //composable функция
-                //Scaffold — это встроенный элемент Compose, который предоставляет стандартную
-                //структуру пользовательского интерфейса
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
             }
-        }
-    }
-}
-
-@Composable // функция создает элемент на экране
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true, showSystemUi = true) //функция предварительного просмотра
-//содержимое, выдаваемое функцией, должно отображаться на панели предварительного просмотра
-@Composable
-fun GreetingPreview() {
-    ComposeDemoTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            Greeting("Compose", modifier = Modifier.padding(innerPadding))
         }
     }
 }
